@@ -7,6 +7,11 @@
         "error": {
             "404": ""
         },
+        "button": {
+            "signin": "",
+            "signup": "",
+            "logout": ""
+        },
         "form": {
             "nickname": "",
             "email": "",

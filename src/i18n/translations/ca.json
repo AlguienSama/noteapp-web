@@ -7,6 +7,11 @@
         "error": {
             "404": "404 - Pàgina No Trobada"
         },
+        "button": {
+            "signin": "Iniciar Sessió",
+            "signup": "Registrar-se",
+            "logout": "Tancar Sessió"
+        },
         "form": {
             "nickname": "Nom d'Usuari",
             "email": "Correu Electrònic",

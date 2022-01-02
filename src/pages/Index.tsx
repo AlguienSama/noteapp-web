@@ -5,7 +5,7 @@ import logo from '../logo.svg';
 import '../App.css';
 import WriteText from "../components/WriteText";
 
-function Home() {
+function Index() {
   const {t} = useTranslation();
 
   return (
@@ -20,4 +20,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Index;

@@ -7,7 +7,7 @@ function useLocalStorage(key: string, initialValue: string): [string, Function] 
       const item = window.localStorage.getItem(key)
       return item ? JSON.parse(item) : initialValue
     } catch (error) {
-      console.log(error)
+      console.error(error)
       return initialValue
     }
   })
@@ -16,7 +16,7 @@ function useLocalStorage(key: string, initialValue: string): [string, Function] 
       setStoredValue(valueToStore)
       window.localStorage.setItem(key, JSON.stringify(valueToStore))
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -39,8 +39,6 @@ interface Props {
 
 export function ThemeProvider(props: Props): JSX.Element {
   const [theme, setTheme] = useLocalStorage("theme", "dark");
-  console.log(theme);
-  
   
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>

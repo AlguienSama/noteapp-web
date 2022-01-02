@@ -9,14 +9,19 @@ import {
 } from 'react-router-dom'
 
 import Home from './pages/Home';
+import Index from "./pages/Index";
 import NotFound from "./pages/404";
 import { Navbar } from './components/Navbar';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-const isLogged = (comp: JSX.Element) => {
+const isLogged = (comp: JSX.Element, redirect: JSX.Element = <Navigate to={'/Login'} />) => {
   const user = localStorage.getItem("user");
-  return user ? comp : <Navigate to={'/Login'} />;
+  return user ? comp : redirect;
+}
+const notLogged = (comp: JSX.Element) => {
+  const user = localStorage.getItem("user");
+  return user ? <Navigate to={'/Login'} /> : comp;
 }
 
 function App() {
@@ -25,9 +30,9 @@ function App() {
       <div className='App'>
       <Navbar></Navbar>
         <Routes>
-          <Route path='/' element={isLogged(<Home />)}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/register' element={<Register />}></Route>
+          <Route path='/' element={isLogged(<Home />, <Index />)}></Route>
+          <Route path='/login' element={notLogged(<Login />)}></Route>
+          <Route path='/register' element={notLogged(<Register />)}></Route>
           <Route path='*' element={<NotFound /> }></Route>
         </Routes>
       </div>

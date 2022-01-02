@@ -8,8 +8,6 @@ function Login() {
     const {t} = useTranslation();
 
     const onSubmit = handleSubmit(async (data) => {
-        console.log('submit');
-        
         const userData: LoginData = {
             email: data.email,
             password: data.password
