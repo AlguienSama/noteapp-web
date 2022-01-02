@@ -1,0 +1,17 @@
+{
+    "common": {
+        "language": "Language",
+        "title": "This is a test APP with REACT!",
+        "description": "I'm a programer, not a designer",
+        "theme": "Dark Mode",
+        "error": {
+            "404": "404 - Page Not Found"
+        },
+        "form": {
+            "nickname": "User Name",
+            "email": "Email",
+            "password": "Password",
+            "repeatPassword": "Repeat Password"
+        }
+    }
+}

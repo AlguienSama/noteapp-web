@@ -1,0 +1,17 @@
+{
+    "common": {
+        "language": "Idioma",
+        "title": "Esto es una APP de prueba con REACT!",
+        "description": "Soy programador, no diseñador",
+        "theme": "Modo Oscuro",
+        "error": {
+            "404": "404 - Página No Encontrada"
+        },
+        "form": {
+            "nickname": "Nombre de Usuario",
+            "email": "Correo Electrónico",
+            "password": "Contraseña",
+            "repeatPassword": "Repite la Contraseña"
+        }
+    }
+}

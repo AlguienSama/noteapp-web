@@ -1,0 +1,17 @@
+{
+    "common": {
+        "language": "Idioma",
+        "title": "Això és una APP de prova amb REACT!",
+        "description": "Sóc programador, no dissenyador",
+        "theme": "Mode Fosc",
+        "error": {
+            "404": "404 - Pàgina No Trobada"
+        },
+        "form": {
+            "nickname": "Nom d'Usuari",
+            "email": "Correu Electrònic",
+            "password": "Contrasenya",
+            "repeatPassword": "Repeteix la Contrasenya"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "common": {
+        "language": "",
+        "title": "",
+        "description": "",
+        "theme": "",
+        "error": {
+            "404": ""
+        },
+        "form": {
+            "nickname": "",
+            "email": "",
+            "password": "",
+            "repeatPassword": ""
+        }
+    }
+}
