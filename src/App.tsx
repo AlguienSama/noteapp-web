@@ -15,13 +15,13 @@ import { Navbar } from './components/Navbar';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-const isLogged = (comp: JSX.Element, redirect: JSX.Element = <Navigate to={'/Login'} />) => {
+const isLogged = (comp: JSX.Element, redirect: JSX.Element = <Navigate to={'/login'} />) => {
   const user = localStorage.getItem("user");
   return user ? comp : redirect;
 }
 const notLogged = (comp: JSX.Element) => {
   const user = localStorage.getItem("user");
-  return user ? <Navigate to={'/Login'} /> : comp;
+  return user ? <Navigate to={'/login'} /> : comp;
 }
 
 function App() {

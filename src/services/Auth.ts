@@ -20,35 +20,43 @@ class AuthService {
             } : {};
     }
 
+    static #setUser = (res: AxiosResponse) => {
+        localStorage.setItem("token", res.data.user.token);
+        delete res.data.user.token;
+        delete res.data.user.notes;
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+    }
+
     static login = async (data: LoginData): Promise<any | AxiosResponse> => {
-        axios.post('/auth/signin', {...data})
-            .then(res => {
-                if (res.data.user.token) {
-                    localStorage.setItem("token", res.data.user.token);
-                    delete res.data.user.token;
-                    delete res.data.user.notes;
-                    localStorage.setItem("user", JSON.stringify(res.data.user));
-                }
-                return res.status === 201;
-            })
-            .catch(err => {
-                console.error(err);
-                return false;
-            });
+        try {
+            const res = await axios.post('/auth/signin', {...data})                
+            if (res.data.user.token) {
+                this.#setUser(res);
+            }
+            return res.status === 200;
+        } catch (e) {
+            console.error(e);
+            return false;
+            
+        }
     }
 
     static logout = async () => {
-        localStorage.removeItem("token");
+        localStorage.removeItem("user");
     }
     
     static register = async (data: SignupData): Promise<any | AxiosResponse> => {
-        axios.post('/auth/signup', {...data})
-            .then(res => {
-                return res;
-            })
-            .catch(err => {
-                return err;
-            });
+        try {
+            const res = await axios.post('/auth/signup', {...data})
+            if (res.data.user.token) {
+                this.#setUser(res);
+            }
+            return res.status === 201;
+        } catch (e) {
+            console.error(e);
+            return false;
+            
+        }
     }
 
     static getCurrentUser = () => {

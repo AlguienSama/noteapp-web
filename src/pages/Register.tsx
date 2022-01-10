@@ -2,11 +2,13 @@ import React from "react";
 import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form";
 import AuthService, { SignupData } from "../services/Auth";
+import { useNavigate } from "react-router-dom";
 
 
 function Register() {
     const { register, handleSubmit } = useForm();
     const {t} = useTranslation();
+    const navigate = useNavigate();
 
     const onSubmit = handleSubmit(async (data) => {
 
@@ -19,9 +21,10 @@ function Register() {
             email: data.email,
             password: data.password
         }
-        AuthService.register(userData).then(() => {
-            // Redirect
-        })
+        const isLogged = await AuthService.register(userData);
+
+        if (isLogged) { navigate('/'); }
+        else { console.log('error'); }
         
     });
 

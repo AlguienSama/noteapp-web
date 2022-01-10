@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form";
 import AuthService, {LoginData} from "../services/Auth";
@@ -6,15 +7,17 @@ import AuthService, {LoginData} from "../services/Auth";
 function Login() {
     const { register, handleSubmit } = useForm();
     const {t} = useTranslation();
+    const navigate = useNavigate();
 
     const onSubmit = handleSubmit(async (data) => {
         const userData: LoginData = {
             email: data.email,
             password: data.password
         }
-        AuthService.login(userData).then(() => {
-            // Redirect
-        })
+        const isLogged = await AuthService.login(userData);
+
+        if (isLogged) { navigate('/'); }
+        else { console.log('error'); }
         
     });
 

@@ -66,6 +66,37 @@ export const GlobalStyles = createGlobalStyle(
             color: var(--color-primary-${props.theme});
         }
 
+        .btn {
+            background-color: var(--background-tertiary-${props.theme});
+            border: 1px solid transparent;
+            margin: 2px;
+            border-radius: 1rem;
+            box-sizing: border-box;
+            color: var(--color-primary-${props.theme});
+            cursor: pointer;
+            padding: .75rem 1.2rem;
+            text-align: center;
+            text-decoration: none #6B7280 solid;
+            text-decoration-thickness: auto;
+            transition-duration: .2s;
+            transition-property: background-color,border-color,color,fill,stroke;
+            transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            width: auto;
+
+            :hover {
+                background-color: #374151;
+            }
+
+            :focus {
+                box-shadow: none;
+                outline: 2px solid transparent;
+                outline-offset: 2px;
+            }
+        }
+
         .navbar {
             position: fixed;
             left: 0;
