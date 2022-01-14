@@ -55,7 +55,19 @@ class AuthService {
         } catch (e) {
             console.error(e);
             return false;
-            
+        }
+    }
+
+    static googleAuth = async (tokenId: string): Promise<any | AxiosResponse> => {
+        try {
+            const res = await axios.post('/auth/google', {token_id: tokenId})
+            if (res.data.user.token) {
+                this.#setUser(res);
+            }
+            return res.status === 200 || res.status === 201;
+        } catch (e) {
+            console.error(e);
+            return false;
         }
     }
 

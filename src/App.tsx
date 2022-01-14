@@ -12,8 +12,7 @@ import Home from './pages/Home';
 import Index from "./pages/Index";
 import NotFound from "./pages/404";
 import { Navbar } from './components/Navbar';
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import SignIn from "./pages/SignIn";
 
 const isLogged = (comp: JSX.Element, redirect: JSX.Element = <Navigate to={'/login'} />) => {
   const user = localStorage.getItem("user");
@@ -31,8 +30,8 @@ function App() {
       <Navbar></Navbar>
         <Routes>
           <Route path='/' element={isLogged(<Home />, <Index />)}></Route>
-          <Route path='/login' element={notLogged(<Login />)}></Route>
-          <Route path='/register' element={notLogged(<Register />)}></Route>
+          <Route path='/login' element={notLogged(<SignIn form="LOGIN" />)}></Route>
+          <Route path='/register' element={notLogged(<SignIn form="REGISTER" />)}></Route>
           <Route path='*' element={<NotFound /> }></Route>
         </Routes>
       </div>
