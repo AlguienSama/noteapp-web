@@ -16,7 +16,7 @@ function Login() {
         }
         const isLogged = await AuthService.login(userData);
 
-        if (isLogged) { navigate('/'); }
+        if (isLogged) { navigate('/'); window.location.reload(); }
         else { console.log('error'); }
         
     });

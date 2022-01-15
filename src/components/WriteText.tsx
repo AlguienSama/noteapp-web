@@ -1,55 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
+const words = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-interface Props {
+type Props = {
     text: string
 }
-class WriteText extends React.Component<Props> {
-    text: string
 
-    constructor(props: Props) {
-        super(props)
-        this.text = props.text; 
-    }
+const WriteText = ({text}: Props) => {
+    let [curText, writeText] = useState('');
+    let [curLength, setCurLength] = useState(-1);
+    let [loops, setLoops] = useState(0);
 
-    writeText() {        
-        const words = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        let curLength = -1;
-        let loops = 0;
-        let text = this.text;
-        this.text = '';
+    useEffect(() => {
+        let interval: any | Function;
+        if (curLength < text.length) {
+            interval = setInterval(() => {
+                if (loops / 3 === 1) {setLoops(0); setCurLength(curLength => curLength = curLength+1);}
+                setLoops(loops => loops = loops+1);
     
-        const interval = setInterval(() => {
-            this.forceUpdate();    
-            if (loops / 3 === 1) {loops = 0; curLength++;}
-            loops++;
-    
-            let string = '';
-            for (let i = 0; i <= curLength; i++) {
-                string+=text[i];
-            }
-            
-            if (curLength === text.length-1) {
-                this.text = text;
-                clearInterval(interval);
-                this.forceUpdate();   
-                return;
-            }
-    
-            string += words[Math.floor(Math.random() * words.length)];
-            this.text = string; 
-        }, 60);
+                let string = '';
+                for (let i = 0; i <= curLength; i++) { string+=text[i]; }
+                
+                if (curLength >= text.length-1) {
+                    writeText(text);
+                    return () => clearInterval(interval);
+                }
         
-        this.text = 'asdasdasd'
-    }
+                string += words[Math.floor(Math.random() * words.length)];
+                writeText(string);
+            }, 60);
+        } else {
+            clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+    });
 
-    componentDidMount() {
-        this.writeText()
-    }
-
-    render() {
-        return <span>{this.text}</span>
-    }
+    return (<span>{curText}</span>)
 }
 
 export default WriteText;

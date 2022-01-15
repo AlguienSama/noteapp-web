@@ -16,6 +16,8 @@ import SignIn from "./pages/SignIn";
 
 const isLogged = (comp: JSX.Element, redirect: JSX.Element = <Navigate to={'/login'} />) => {
   const user = localStorage.getItem("user");
+  console.log(user? 'comp' : 'redirect');
+  
   return user ? comp : redirect;
 }
 const notLogged = (comp: JSX.Element) => {

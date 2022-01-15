@@ -23,7 +23,7 @@ function Register() {
         }
         const isLogged = await AuthService.register(userData);
 
-        if (isLogged) { navigate('/'); }
+        if (isLogged) { navigate('/'); window.location.reload(); }
         else { console.log('error'); }
         
     });
