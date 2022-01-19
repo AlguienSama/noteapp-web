@@ -1,18 +1,16 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+//import { useTranslation } from 'react-i18next';
 
 import '../App.css';
-import WriteText from "../components/WriteText";
+import { Note } from '../components/note/layout';
 
 function Home() {
-  const {t} = useTranslation();
+  //const {t} = useTranslation();
 
   return (
     <div className="Home">
       <header className="App-header">
-        <p>
-          <code><WriteText text={t('title')}></WriteText></code>
-        </p>
+        <Note />
       </header>
     </div>
   );
