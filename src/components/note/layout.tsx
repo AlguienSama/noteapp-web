@@ -1,14 +1,16 @@
 import React from 'react';
 import { useLocalStorage } from '../../services/LocalStorage';
-import { useTranslation } from 'react-i18next';
+//import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
+import { NoteDropdown } from './dropdown';
+import './main.css';
 
-enum ViewFormat {
+export enum ViewFormat {
     PLAIN = "plain",
     HTML = "html",
     MD = "md"
 }
-type NoteProps = {
+export type NoteProps = {
     id: string | null,
     title: string,
     content: string,
@@ -23,7 +25,7 @@ type NoteProps = {
 
 export function Note() {
     const [savedNote, setNote] = useLocalStorage("note", "");
-    const {t} = useTranslation();
+    //const {t} = useTranslation();
     
     let note: NoteProps = {
         id: "",
@@ -36,11 +38,6 @@ export function Note() {
         view_format: ViewFormat.PLAIN,
         created_at: new Date(),
         last_at: new Date()
-    }
-
-    let viewFormatArray = [];
-    for (let i in  ViewFormat) {
-        viewFormatArray.push(i)
     }
 
     if (savedNote !== "") {
@@ -63,38 +60,10 @@ export function Note() {
         setNote(JSON.stringify(data));
     });
 
-    const selectRemindDate = () => {
-        // Open popup with select date & time for remind
-    }
-    const selectNoteColor = () => {
-        // Open popup with select color for note background
-    }
-
     return(
-        <form onSubmit={onSubmit} onChange={onChange}>
-            <div>
-                <ul>
-                    <li>
-                        <span onClick={selectRemindDate}>
-                            {t('form.note.remindDate')} {note.remind || t('form.note.noRemindDate')}
-                        </span>
-                    </li>
-                    <li><input type="checkbox" {...register('is_pinned')} />{t('form.note.pin')}</li>
-                    <li>
-                        <span onClick={selectNoteColor}>
-                            {t('form.note.color')}
-                        </span>
-                    </li>
-                    <li>
-                        <span>{t('form.note.view_format')}</span>
-                        <select {...register('view_format')} value={note.view_format}>
-                            {viewFormatArray.map(v => (
-                                <option key={v} defaultValue={v}>{v.toUpperCase()}</option>
-                            ))}
-                        </select>
-                    </li>
-                </ul>
-            </div>
+        <form onSubmit={onSubmit} onChange={onChange} className='note-form'
+        style={{backgroundColor: note.color || '#000000'}}>
+            <NoteDropdown note={note} register={register}></NoteDropdown>
             <div>
                 <span className=''>{note.created_at}</span>
                 <input type="text" {...register('title', {

@@ -56,14 +56,33 @@ export const GlobalStyles = createGlobalStyle(
             pointer-events: none;
         }
 
-        .App-header {
+        .container {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             font-size: calc(10px + 2vmin);
             color: var(--color-primary-${props.theme});
+        }
+        .home {
+            width: 80%;
+            padding-left: 20%;
+        }
+        .home>* {
+            display: inline-block;
+        }
+        .left-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 60px;
+            width: 20%;
+        }
+        .main {
+            width: 60%;
+        }
+        .note-viewer {
+            width: 40%;
         }
 
         .btn {

@@ -3,15 +3,25 @@ import React from 'react';
 
 import '../App.css';
 import { Note } from '../components/note/layout';
+import { LeftMenu } from '../components/LeftMenu';
 
 function Home() {
   //const {t} = useTranslation();
 
   return (
-    <div className="Home">
-      <header className="App-header">
-        <Note />
-      </header>
+    <div>
+      <LeftMenu />
+      <div className="home">
+        <div className="main">
+          <div className="container">
+            a
+          </div>
+        </div><div className="note-viewer">
+          <div className="container">
+            <Note />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
