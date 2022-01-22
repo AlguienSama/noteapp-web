@@ -27,9 +27,10 @@ export function NoteDropdown({note, register}: NoteDropdownProps) {
             <span className="dropbtn">&#9660;</span>
             <ul className="dropdown-content">
                 <li>
-                    <span onClick={selectRemindDate}>
-                        {t('form.note.remindDate')} {note.remind || t('form.note.noRemindDate')}
-                    </span>
+                    <div onClick={selectRemindDate}>
+                        {t('form.note.remindDate')} <br />
+                        <span className="small">{note.remind || t('form.note.noRemindDate')}</span>
+                    </div>
                 </li>
                 <li><input type="checkbox" {...register('is_pinned')} />{t('form.note.pin')}</li>
                 <li>
@@ -38,7 +39,7 @@ export function NoteDropdown({note, register}: NoteDropdownProps) {
                     </span>
                 </li>
                 <li>
-                    <span>{t('form.note.view_format')}</span>
+                    <span>{t('form.note.view_format')}:</span>
                     <select {...register('view_format')} defaultValue={note.view_format}>
                         {viewFormatArray.map(v => (
                             <option key={v} defaultValue={v}>{v.toUpperCase()}</option>
