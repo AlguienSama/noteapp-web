@@ -29,12 +29,12 @@ export function Navbar(): JSX.Element {
 	let buttons: JSX.Element;
 	
 	if (!isLogged()) {			
-		buttons = <div className="">
+		buttons = <div className="navbar-item">
 			<Link to={'/login'}><button className="btn">{ t('button.signin') }</button></Link>
 			<Link to={'/register'}><button className="btn">{ t('button.signup') }</button></Link>
 		</div>
 	} else {
-		buttons = <div className="">
+		buttons = <div className="navbar-item">
 			<button className="btn" onClick={logout}>{ t('button.logout') }</button>
 			{ /* Dropdown profile ¿? */ }
 		</div>

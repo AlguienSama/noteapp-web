@@ -16,7 +16,17 @@
             "nickname": "Nom d'Usuari",
             "email": "Correu Electrònic",
             "password": "Contrasenya",
-            "repeatPassword": "Repeteix la Contrasenya"
+            "repeatPassword": "Repeteix la Contrasenya",
+            "note": {
+                "save": "Guardar",
+                "title": "Títol",
+                "content": "Contingut...",
+                "remindDate": "Recordatori",
+                "noRemindDate": "Cap",
+                "pin": "Fixat",
+                "color": "Color",
+                "view_format": "Format"
+            }
         }
     }
 }

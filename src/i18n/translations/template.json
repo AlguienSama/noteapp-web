@@ -16,7 +16,17 @@
             "nickname": "",
             "email": "",
             "password": "",
-            "repeatPassword": ""
+            "repeatPassword": "",
+            "note": {
+                "save": "",
+                "title": "",
+                "content": "",
+                "remindDate": "",
+                "noRemindDate": "",
+                "pin": "",
+                "color": "",
+                "view_format": ""
+            }
         }
     }
 }

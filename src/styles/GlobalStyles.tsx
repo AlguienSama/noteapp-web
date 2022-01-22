@@ -57,7 +57,6 @@ export const GlobalStyles = createGlobalStyle(
         }
 
         .container {
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -83,6 +82,20 @@ export const GlobalStyles = createGlobalStyle(
         }
         .note-viewer {
             width: 40%;
+            .container {
+                margin-right: 10px;
+            }
+        }
+
+        .float-right {
+            display: block;
+            float: right;
+            position: relative;
+            margin-right: 16px;
+
+            >* {
+                display: inline-block;
+            }
         }
 
         .btn {
@@ -104,6 +117,11 @@ export const GlobalStyles = createGlobalStyle(
             -webkit-user-select: none;
             touch-action: manipulation;
             width: auto;
+
+            &-small {
+                margin: 10px;
+                padding: 2px 12px;
+            }
 
             :hover {
                 background-color: #374151;
@@ -145,6 +163,7 @@ export const GlobalStyles = createGlobalStyle(
                 float: right;
                 .navbar-item {
                     vertical-align: middle;
+                    display: inline-block;
                     padding: 10px;
                 }
             }

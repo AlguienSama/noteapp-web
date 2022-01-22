@@ -16,7 +16,17 @@
             "nickname": "User Name",
             "email": "Email",
             "password": "Password",
-            "repeatPassword": "Repeat Password"
+            "repeatPassword": "Repeat Password",
+            "note": {
+                "save": "Save",
+                "title": "Title",
+                "content": "Content...",
+                "remindDate": "Remind",
+                "noRemindDate": "None",
+                "pin": "Pin",
+                "color": "Color",
+                "view_format": "View Format"
+            }
         }
     }
 }
