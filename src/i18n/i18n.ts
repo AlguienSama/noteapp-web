@@ -11,19 +11,22 @@ const resources = {
     ca,
     en,
     es,
-}
+};
 
 export const availableLanguages = [
     {'iso': 'ca', 'lang': 'català'},
     {'iso': 'en', 'lang': 'english'},
     {'iso': 'es', 'lang': 'español'}
-]
-  
+];
+
+const savedLang:string | null = window.localStorage.getItem("language");
+const lng:string = savedLang ? JSON.parse(savedLang) : "ca";
+
 i18n.use(initReactI18next)
     .use(HttpApi)
     .use(LanguageDetector)
     .init({
         resources,
         defaultNS: "common",
-        lng: "ca",
+        lng: lng
     });

@@ -8,6 +8,7 @@ import ToggleTheme from '../components/ToggleTheme';
 import { ThemeProvider } from "../hooks/ThemeContext";
 import logo from '../assets/images/logo.png';
 import AuthService from "../services/Auth";
+import { useLocalStorage } from "../services/LocalStorage";
 
 const isLogged = () => {
 	const user = localStorage.getItem("user");
@@ -17,6 +18,8 @@ const isLogged = () => {
 
 export function Navbar(): JSX.Element {
 	let navigate = useNavigate();
+	// eslint-disable-next-line
+	const [language, setLanguage] = useLocalStorage("language", "");
 
 	const logout = async () => {
 		await AuthService.logout();
@@ -39,6 +42,11 @@ export function Navbar(): JSX.Element {
 			{ /* Dropdown profile ¿? */ }
 		</div>
 	}
+
+	const changeLanguage = (event: React.ChangeEvent<HTMLInputElement> | any) => {
+		i18n.changeLanguage(event.target.value);
+		setLanguage(event.target.value);
+	}
 	
 	return (
 			<div className="navbar-content">
@@ -49,7 +57,7 @@ export function Navbar(): JSX.Element {
 					<Link to={'/'}><img src={logo} alt="logo" className="navbar-logo" /></Link>
 					<div className="navbar-right">
 						<label htmlFor="language" className="language navbar-item">
-							<select defaultValue={i18n.language} onChange={(e) => i18n.changeLanguage(e.target.value)}>
+							<select defaultValue={i18n.language} onChange={changeLanguage}>
 								{availableLanguages.map((language) =>
 									<option value={language.iso} key={language.iso}>{language.lang.toUpperCase()}</option>
 								)}
