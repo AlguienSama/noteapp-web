@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import NoteService from './Note';
 
 export type LoginData = {
     email: string;
@@ -23,6 +24,7 @@ class AuthService {
     static #setUser = (res: AxiosResponse) => {
         localStorage.setItem("token", res.data.user.token);
         delete res.data.user.token;
+        NoteService.setNotesLocalStorage(res.data.user.notes);
         delete res.data.user.notes;
         localStorage.setItem("user", JSON.stringify(res.data.user));
     }

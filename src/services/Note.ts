@@ -21,3 +21,30 @@ export type NoteDndProps = {
     top: number,
     left: number
 }
+
+class NoteService {
+
+    static setNotesLocalStorage = async (notes: NoteProps[]) => {
+        let savedNotes = localStorage.getItem("notes");
+        
+        if (savedNotes === null && notes !== undefined) {
+            savedNotes = JSON.stringify(notes);
+        } else if (savedNotes !== null && notes !== undefined) {
+            let objectNotes = JSON.parse(savedNotes);
+            CONTINUE: for (const note of notes) {
+                for (const sNote of objectNotes) {
+                    if (note === sNote) {
+                        continue CONTINUE;
+                    }
+                }
+                objectNotes.push(note);
+            }
+            savedNotes = JSON.stringify(objectNotes);
+        }
+
+        console.log(savedNotes);
+    }
+
+}
+
+export default NoteService;
