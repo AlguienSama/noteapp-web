@@ -16,6 +16,8 @@ export const Note = memo(function Note({note, preview}: NoteMemoProps) {
     return (
         <div style={{ ...styles }} role={preview ? 'BoxPreview' : 'Box'}>
 			{note.content}
+            {console.log('note')}
+            {console.log(note)}
 		</div>
     );
 });

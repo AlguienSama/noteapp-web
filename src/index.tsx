@@ -8,7 +8,7 @@ import './i18n/i18n';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:4000/api';
-axios.defaults.headers.common['Authorization'] = 'AUTH_TOKEN';
+axios.defaults.headers.common['Authorization'] = localStorage.getItem("token") || "";
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 ReactDOM.render(

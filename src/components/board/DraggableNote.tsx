@@ -34,8 +34,10 @@ export const DraggableNote = memo(function Draggable(props: DraggableNoteProps) 
     }), [id, left, top, note]);
     useEffect(() => {
         preview(getEmptyImage(), { captureDraggingState: true });
+        // eslint-disable-next-line
     }, []);
     return (
+        // eslint-disable-next-line
         <div ref={drag} style={getStyles(left, top, isDragging)} role="DraggableBox">
 			<Note note={note} />
 		</div>

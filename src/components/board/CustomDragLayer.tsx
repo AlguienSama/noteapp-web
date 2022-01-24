@@ -49,7 +49,7 @@ export const CustomDragLayer = ({snapToGrid}: CustomDragLayerProps) => {
     function renderItem() {
         switch (itemType) {
             case ItemTypes.BOX:
-                return <BoxDragPreview note={item}/>;
+                return <BoxDragPreview note={item.note}/>;
             default:
                 return null;
         }

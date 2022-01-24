@@ -2,7 +2,8 @@ import { useCallback, useState } from 'react';
 import { useDrop } from 'react-dnd';
 import update from 'immutability-helper';
 import { DraggableNote } from "./DraggableNote"
-import { NoteDndProps } from '../../services/Note';
+import NoteService, { NoteDndProps } from '../../services/Note';
+import { useEffect } from 'react';
 
 type containerProps = {
     snapToGrid: boolean
@@ -32,14 +33,28 @@ export function doSnapToGrid(x:number, y:number): [number, number] {
     return [snappedX, snappedY]
 }
 export const Container = ({ snapToGrid }:containerProps) => {
-    const [notes, setBoxes] = useState<NoteDndProps[]>();
-    const moveBox = useCallback((id, left, top) => {
-        setBoxes(update(notes, {
+    const [notesDnd, setDndNotes] = useState<NoteDndProps>({});
+    
+    useEffect(() => {
+        const getNotes = async () => {
+            const notes = await NoteService.getNotes();
+            let noteObject: NoteDndProps = {};
+            notes.forEach((n) => {
+                const noteId = n.id || "";
+                noteObject[noteId] ={note: n, top: 20, left: 20};
+            });
+            setDndNotes(noteObject);
+        }
+        getNotes();
+    }, []);
+
+    const moveNote = useCallback((id, left, top) => {
+        setDndNotes(update(notesDnd, {
             [id]: {
                 $merge: { left, top },
             },
         }));
-    }, [notes]);
+    }, [notesDnd]);
     const [, drop] = useDrop(() => ({
         accept: ItemTypes.BOX,
         drop(item: DragItem, monitor) {
@@ -50,18 +65,19 @@ export const Container = ({ snapToGrid }:containerProps) => {
             let left = Math.round(item.left + delta.x);
             let top = Math.round(item.top + delta.y);
             if (snapToGrid) {
-                ;
                 [left, top] = doSnapToGrid(left, top);
             }
-            moveBox(item.id, left, top);
+            moveNote(item.id, left, top);
             return undefined;
         },
-    }), [moveBox]);
+    }), [moveNote]);
 
     return (
         <div ref={drop} style={styles}>
-			{notes?.map((n) => (
-                <DraggableNote key={n.note.id} id={n.note.id} {...n}/>
+			{Object.keys(notesDnd).map((i) => (
+                <DraggableNote key={i} id={i} 
+                left={notesDnd[i].left} top={notesDnd[i].top}
+                note={notesDnd[i].note}/>
             ))}
 		</div>
     );
