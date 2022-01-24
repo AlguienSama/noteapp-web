@@ -4,24 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { NoteDropdown } from './dropdown';
 import './main.scss';
-
-export enum ViewFormat {
-    PLAIN = "plain",
-    HTML = "html",
-    MD = "md"
-}
-export type NoteProps = {
-    id: string | null,
-    title: string,
-    content: string,
-    remind: Date | null,
-    is_pinned: boolean,
-    priority: number,
-    color: string,
-    view_format: ViewFormat
-    created_at: Date | string,
-    last_at: Date | string
-}
+import { NoteProps, ViewFormat } from '../../services/Note';
 
 export function Note() {
     const [savedNote, setNote] = useLocalStorage("note", "");

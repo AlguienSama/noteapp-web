@@ -29,7 +29,7 @@ class AuthService {
 
     static login = async (data: LoginData): Promise<any | AxiosResponse> => {
         try {
-            const res = await axios.post('/auth/signin', {...data})                
+            const res = await axios.post('/auth/signin', {...data});
             if (res.data.user.token) {
                 this.#setUser(res);
             }

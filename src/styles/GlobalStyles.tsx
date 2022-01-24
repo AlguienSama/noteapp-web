@@ -132,6 +132,10 @@ export const GlobalStyles = createGlobalStyle(
                 outline: 2px solid transparent;
                 outline-offset: 2px;
             }
+            :disabled {
+                background-color: #6B7280;
+                cursor: auto;
+            }
         }
 
         .navbar {
@@ -208,6 +212,59 @@ export const GlobalStyles = createGlobalStyle(
         .test {
             height: 500px;
         }
+
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: none;
+            box-shadow: inset 0 0 0 0.125rem #666;
+            height: 1rem;
+            width: 1rem;
+            display: inline-block;
+            border-radius: 0.125rem;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            position: relative;
+            top: 6px;
+
+            &:active {
+                box-shadow: inset 0 0 0 0.125rem #2962ff;
+            }
+
+            &:checked {
+                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5A2,2,0,0,0,19,3ZM10,17,5,12l1.41-1.41L10,14.17l7.59-7.59L19,8Z" fill="%232962ff"/></svg>');
+                background-position: center;
+                box-shadow: none;
+
+                &:active {
+                opacity: 0.9;
+                }
+            }
+
+            // add nice hover effect input
+            &::before {
+                content: "";
+                display: inline-block;
+                height: 100%;
+                width: 100%;
+                background-color: transparentize(#2962ff, 1);
+                position: absolute;
+                border-radius: 50%;
+                transform: scale(0.5);
+                transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+                will-change: transform background-color;
+            }
+
+            &:hover::before {
+                background-color: transparentize(#2962ff, 0.9);
+                transform: scale(2.25);
+            }
+        }
+
+        .board {
+            width: 100%;
+        }
+
 
     `
 );

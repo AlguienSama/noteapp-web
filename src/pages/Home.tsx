@@ -4,6 +4,7 @@ import React from 'react';
 import '../App.css';
 import { Note } from '../components/note/layout';
 import { LeftMenu } from '../components/LeftMenu';
+import { Board } from '../components/board/layout';
 
 function Home() {
   //const {t} = useTranslation();
@@ -14,7 +15,7 @@ function Home() {
       <div className="home">
         <div className="main">
           <div className="container">
-            a
+            <Board></Board>
           </div>
         </div><div className="note-viewer">
           <div className="container">

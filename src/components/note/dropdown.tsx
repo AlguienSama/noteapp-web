@@ -1,7 +1,7 @@
 import React from "react";
 import { UseFormRegister } from "react-hook-form";
 import { useTranslation } from 'react-i18next';
-import { NoteProps, ViewFormat } from "./layout";
+import { NoteProps, ViewFormat } from "../../services/Note";
 
 type NoteDropdownProps = {
     note: NoteProps,
