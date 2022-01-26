@@ -1,7 +1,7 @@
 import React, {memo, useEffect} from "react";
 import { useDrag } from "react-dnd";
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import { Note } from "./Note";
+import { NoteBoard } from "./Note";
 import { ItemTypes } from "./container";
 import { NoteProps } from "../../services/Note";
 
@@ -39,7 +39,7 @@ export const DraggableNote = memo(function Draggable(props: DraggableNoteProps) 
     return (
         // eslint-disable-next-line
         <div ref={drag} style={getStyles(left, top, isDragging)} role="DraggableBox">
-			<Note note={note} />
+			<NoteBoard note={note} />
 		</div>
     );
 });

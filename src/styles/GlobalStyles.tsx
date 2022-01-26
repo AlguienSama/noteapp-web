@@ -264,7 +264,5 @@ export const GlobalStyles = createGlobalStyle(
         .board {
             width: 100%;
         }
-
-
     `
 );

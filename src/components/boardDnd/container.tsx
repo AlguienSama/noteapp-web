@@ -22,7 +22,7 @@ const styles: React.CSSProperties = {
     display: 'table',
     marginLeft: '1%',
     width: '97%',
-    height: 300,
+    height: 'calc(100vh - 230px)',
     border: '1px solid black',
     position: 'relative',
 };

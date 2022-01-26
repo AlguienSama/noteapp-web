@@ -8,7 +8,7 @@ const layerStyles: React.CSSProperties = {
     position: 'absolute',
     pointerEvents: 'none',
     zIndex: 100,
-    left: '-40%',
+    left: '-537px',
     top: 0,
     width: '100%',
     height: '100%',

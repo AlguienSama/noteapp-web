@@ -30,7 +30,6 @@ class NoteService {
 
     static getNotes = async (): Promise<NoteProps[]> => {
         try {
-            console.log(axios.defaults.headers.common['Authorization']);
             const res = await axios.get('/note/');
             if (res.status === 200) {
                 return res.data.notes;
@@ -58,7 +57,7 @@ class NoteService {
             savedNotes = JSON.stringify(objectNotes);
         }
 
-        console.log(savedNotes);
+        return savedNotes;
     }
 
     static setNoteLocalStorage = async (note: NoteProps) => {
@@ -76,7 +75,7 @@ class NoteService {
             savedNotes = JSON.stringify(objectNotes);
         }
 
-        console.log(savedNotes);
+        return savedNotes;
     }
 
 }

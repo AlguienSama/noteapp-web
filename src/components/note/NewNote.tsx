@@ -4,14 +4,24 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { NoteDropdown } from './dropdown';
 import './main.scss';
-import { NoteProps } from '../../services/Note';
+import { NoteProps, ViewFormat } from '../../services/Note';
 
-type DefaultNoteProps = {
-    note: NoteProps
-}
-export function Note({note}: DefaultNoteProps) {
-    const [savedNote, setNote] = useLocalStorage(note.id || "", JSON.stringify(note));
+export function NewNote() {
+    const [savedNote, setNote] = useLocalStorage("note", "");
     const {t} = useTranslation();
+    
+    let note: NoteProps = {
+        id: "",
+        title: "",
+        content: "",
+        remind: null,
+        is_pinned: false,
+        priority: 0,
+        color: "",
+        view_format: ViewFormat.PLAIN,
+        created_at: new Date(),
+        last_at: new Date()
+    }
 
     if (savedNote !== "") {
         note = {...(JSON.parse(savedNote))};

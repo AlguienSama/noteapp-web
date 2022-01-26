@@ -1,10 +1,8 @@
 import { useEffect, useState, memo } from 'react';
 import { NoteProps } from '../../services/Note';
-import { Note } from './Note';
+import { NoteBoard } from './Note';
 const styles = {
     display: 'inline-block',
-    transform: 'rotate(-7deg)',
-    WebkitTransform: 'rotate(-7deg)',
 };
 
 type BoxDragPreviewProps = {
@@ -18,7 +16,7 @@ export const BoxDragPreview = memo(function BoxDragPreview({note}: BoxDragPrevie
     }, [tickTock]);
     return (
         <div style={styles}>
-			<Note note={note} preview/>
+			<NoteBoard note={note} preview/>
 		</div>
     );
 });
