@@ -8,9 +8,9 @@ const layerStyles: React.CSSProperties = {
     position: 'absolute',
     pointerEvents: 'none',
     zIndex: 100,
-    left: '-537px',
+    left: 0,
     top: 0,
-    width: '100%',
+    textAlign: 'left',
     height: '100%',
 };
 
